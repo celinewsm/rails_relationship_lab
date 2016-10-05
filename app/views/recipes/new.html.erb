@@ -1,0 +1,33 @@
+<h1>Recipes#new</h1>
+<%= form_for @recipe do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :instructions %><br>
+    <%= f.text_area :instructions %>
+  </p>
+  <p>
+    <%= f.label :servings %><br>
+    <%= f.text_field :servings %>
+  </p>
+
+  <p>
+    <%= f.label :courses %><br/>
+    <%= f.select :course_ids, Course.all.collect {|x| [x.name,x.id]} , {}, :multiple => true %>
+  </p>
+
+  <p>
+    <%= f.label :ingredients %><br/>
+    <%= f.select :ingredient_ids, Ingredient.all.collect {|x| [x.name,x.id]} , {}, :multiple => true %>
+  </p>
+  <p>
+    <%= f.label :cuisines %><br/>
+    <%= f.select :cuisine_id, Cuisine.all.collect {|x| [x.name,x.id]} %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<a href="../">Back</a>

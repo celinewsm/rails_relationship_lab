@@ -1,0 +1,13 @@
+<h1>Courses#index</h1>
+<%= link_to 'New', new_course_path %>
+
+<% @courses.each do |course| %>
+<div>
+    <p><%= course.name %>
+    <%= link_to 'Edit', edit_course_path(course) %>
+    <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+</div>
+<% end %>
+<br/>
+<a href="../">Back</a>

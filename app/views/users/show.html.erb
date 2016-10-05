@@ -1,0 +1,10 @@
+<h1>Show user</h1>
+<strong><%= @current_user.email %>'s <%= pluralize(@user_recipes.count, 'recipe') %></strong>
+<% @user_recipes.each do |recipe| %>
+<div>
+    <%= recipe.name %>
+    <%= link_to 'Edit', edit_recipe_path(recipe.id) %>
+    <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+<% end %>
+<a href="../">Back</a>

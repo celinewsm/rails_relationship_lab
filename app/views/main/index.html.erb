@@ -1,0 +1,23 @@
+<h1>Main#index</h1>
+<% if @current_user %>
+<h2>Hello, <%= @current_user.email %></h2>
+Click here to <a href="/recipes/new">create a new recipe</a> or click here to <a href="/profile">view and edit</a> your existing recipes.
+<% end %>
+<ul>
+  <% Course.all.each do |course| %>
+    <li><%= link_to "#{course.name}", course_path(course) %> has <%= pluralize(course.recipes.count, 'recipe') %></li>
+    <ul>
+      <% Course.find(course.id).recipes.reorder('name ASC').each do |recipe| %>
+      <li> <%= recipe.name %> | <%= link_to 'View', recipe_path(recipe.id) %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>
+
+<% if @current_user %>
+<p>
+  <%= link_to 'Log out', logout_path, method: :delete %>
+</p>
+<% else %>
+<%= link_to 'Sign in', login_path %>
+<% end %>

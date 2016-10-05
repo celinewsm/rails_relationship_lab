@@ -1,0 +1,12 @@
+<h1>Courses#show</h1>
+Name: <%= @course.name %><br>
+Recipes:
+<% @course.recipes.each do |recipe| %>
+<div>
+    <p><%= recipe.name %>
+    <%= link_to 'Edit', edit_recipe_path(recipe) %>
+    <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+</div>
+<% end %>
+<%= link_to 'Back', '../' %>

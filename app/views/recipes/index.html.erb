@@ -1,0 +1,24 @@
+<h1>Recipes#index</h1>
+<%= link_to 'New', new_recipe_path %>
+
+<% @recipes.each do |recipe| %>
+  <% recipe.ingredients.each do |ingredient| %>
+    <% @to_display = false %>
+    <% if ingredient.quantity > 0 %>
+    <%  @to_display = true %>
+    <%  else %>
+    <%  @to_display = false %>
+    <% end %>
+  <% end %>
+  <% if @to_display %>
+      <div>
+          <p><%= recipe.name %>
+          <%= link_to 'View', recipe_path(recipe) %>
+          <!-- <%= link_to 'Edit', edit_recipe_path(recipe) %>
+          <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+          </p>
+      </div>
+    <% end %>
+<% end %>
+<br/>
+<a href="../">Back</a>

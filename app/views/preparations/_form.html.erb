@@ -1,0 +1,33 @@
+<%= form_for(preparation) do |f| %>
+  <% if preparation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(preparation.errors.count, "error") %> prohibited this preparation from being saved:</h2>
+
+      <ul>
+      <% preparation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ingredient %><br/>
+    <%= f.select :ingredient_id, Ingredient.all.collect {|x| [x.name,x.id]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :recipe %><br/>
+    <%= f.select :recipe_id, Recipe.all.collect {|x| [x.name,x.id]} %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :method %>
+    <%= f.text_field :method %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
