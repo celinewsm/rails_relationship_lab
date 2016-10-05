@@ -19,5 +19,5 @@ Click here to <a href="/recipes/new">create a new recipe</a> or click here to <a
   <%= link_to 'Log out', logout_path, method: :delete %>
 </p>
 <% else %>
-<%= link_to 'Sign in', login_path %>
+<%= link_to 'Sign in', login_path %> | <%= link_to 'Sign up', signup_path %>
 <% end %>
